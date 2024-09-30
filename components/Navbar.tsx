@@ -1,6 +1,7 @@
 import { Heart } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
@@ -13,6 +14,9 @@ const Navbar = () => {
           </p>
         </div>
       </Link>
+      <div className="flex-between gap-5">
+        <MobileNav />
+      </div>
     </nav>
   );
 };
