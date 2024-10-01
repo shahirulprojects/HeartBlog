@@ -76,3 +76,10 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.bg-sign-in {
+  background-image: url("/icons/signinbg.png");
+}
+.bg-sign-up {
+  background-image: url("/icons/signupbg.png");
+}

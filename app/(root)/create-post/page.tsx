@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
@@ -14,11 +15,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Loader2 } from "lucide-react";
 
 const CreatePost = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const formSchema = z.object({
-    username: z.string().min(2, {
-      message: "Username must be at least 2 characters.",
+    title: z.string().min(10, {
+      message: "Title must be at least 10 characters.",
+    }),
+    content: z.string().min(30, {
+      message: "Content must be at least 30 characters.",
     }),
   });
 
@@ -26,7 +32,7 @@ const CreatePost = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      title: "",
     },
   });
 
@@ -39,7 +45,7 @@ const CreatePost = () => {
 
   return (
     <div className="text-[30px] mt-[-35px] ml-[-20px]">
-      <h1 className="font-extrabold tracking-tighter text-purple-950">
+      <h1 className="font-extrabold tracking-tighter text-purple-950 mb-[20px]">
         Create Post
       </h1>
       <Form {...form}>
@@ -49,25 +55,49 @@ const CreatePost = () => {
             name="title"
             render={({ field }) => (
               <FormItem className="flex w-full flex-col">
-                <FormLabel className="paragraph-semibold text-dark400_light800">
-                  Question Title{" "}
-                  <span className="text-red-500 dark:text-red-300">*</span>
-                </FormLabel>
+                <FormLabel>Blog Title</FormLabel>
                 <FormControl className="mt-3.5">
-                  <Input
-                    className="no-focus paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 min-h-[56px] border"
-                    {...field}
-                  />
+                  <Input className="min-h-[56px] bg-[#D1E9F6]" {...field} />
                 </FormControl>
-                <FormDescription className="body-regular mt-2.5 text-gray-500 dark:text-light-500">
-                  Insert a specific title for the problem.
+                <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
+                  Choose a title that sparks curiosity and excitement.
                 </FormDescription>
                 {/* FormMessage is for displaying success or error messages,in this case we want to display error message */}
-                <FormMessage className="text-red-500 dark:text-red-300" />
+                <FormMessage className="text-red-500" />
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <FormField
+            control={form.control}
+            name="content"
+            render={({ field }) => (
+              <FormItem className="flex w-full flex-col">
+                <FormLabel>Blog Content</FormLabel>
+                <FormControl className="mt-3.5">
+                  <Textarea className="bg-[#D1E9F6] min-h-[200px]" {...field} />
+                </FormControl>
+                <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
+                  Share your insights and let your creativity take center stage.
+                </FormDescription>
+                {/* FormMessage is for displaying success or error messages,in this case we want to display error message */}
+                <FormMessage className="text-red-500" />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="rounded-2xl bg-[#7E60BF] hover:bg-[#433979]"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 size={20} className="animate-spin" />
+                &nbsp;Loading...
+              </>
+            ) : (
+              "Submit"
+            )}
+          </Button>
         </form>
       </Form>
     </div>
