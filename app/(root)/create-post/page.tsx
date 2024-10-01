@@ -44,7 +44,7 @@ const CreatePost = () => {
   }
 
   return (
-    <div className="text-[30px] mt-[-35px] ml-[-20px]">
+    <div className="text-[30px] mt-[-35px] ml-[-20px] max-sm:ml-[10px] max-sm:mt-[-50px]">
       <h1 className="font-extrabold tracking-tighter text-purple-950 mb-[20px]">
         Create Post
       </h1>
@@ -57,7 +57,7 @@ const CreatePost = () => {
               <FormItem className="flex w-full flex-col">
                 <FormLabel>Blog Title</FormLabel>
                 <FormControl className="mt-3.5">
-                  <Input className="min-h-[56px] bg-[#D1E9F6]" {...field} />
+                  <Input className="min-h-[56px] bg-blue-200" {...field} />
                 </FormControl>
                 <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
                   Choose a title that sparks curiosity and excitement.
@@ -74,7 +74,7 @@ const CreatePost = () => {
               <FormItem className="flex w-full flex-col">
                 <FormLabel>Blog Content</FormLabel>
                 <FormControl className="mt-3.5">
-                  <Textarea className="bg-[#D1E9F6] min-h-[200px]" {...field} />
+                  <Textarea className="bg-blue-200 min-h-[200px]" {...field} />
                 </FormControl>
                 <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
                   Share your insights and let your creativity take center stage.

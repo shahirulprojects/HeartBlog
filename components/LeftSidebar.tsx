@@ -20,8 +20,7 @@ const LeftSidebar = () => {
             pathname === item.route || pathname.startsWith(`${item.route}/`);
 
           if (item.route === "/create-post") {
-            if (userId) {
-            } else {
+            if (!userId) {
               return null;
             }
           }
@@ -30,8 +29,12 @@ const LeftSidebar = () => {
               href={item.route}
               key={item.label}
               className={cn(
-                "flex gap-4 items-center justify-start w-[200px] p-4 rounded-lg",
-                { "bg-blue-200 text-white": isActive }
+                "flex gap-4 items-center justify-start w-full p-4 rounded-lg",
+                {
+                  "w-[200px]": !userId,
+                  "w-full": userId,
+                  "bg-blue-200 text-white": isActive,
+                }
               )}
             >
               <Image
