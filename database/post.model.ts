@@ -20,6 +20,6 @@ const PostSchema = new Schema({
 });
 
 // turning the schema into a model
-const Post = models.Post || model("Question", PostSchema); // check if the model exist and if not it will create a Post model based on the PostSchema
+const Post = models.Post || model("Post", PostSchema); // check if the model exist and if not it will create a Post model based on the PostSchema
 
 export default Post; // export the model

@@ -15,6 +15,11 @@ export interface CreatePostParams {
   path: string;
 }
 
+export interface GetPostsParams {
+  searchQuery?: string;
+  filter?: string;
+}
+
 export interface GetPostByIdParams {
   postId: string;
 }
