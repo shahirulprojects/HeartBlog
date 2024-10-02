@@ -1,20 +1,24 @@
+"use client";
 import { Heart } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import MobileNav from "./MobileNav";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+// import MobileNav from "./MobileNav";
+import { SignedIn, useAuth, UserButton } from "@clerk/nextjs";
+import { Button } from "./ui/button";
+import Image from "next/image";
 
 const Navbar = () => {
+  const { userId } = useAuth();
   return (
-    <nav className="flex justify-between fixed z-50 w-full px-6 py-4 lg:px-10 bg-[#A594F9]">
-      <Link href="/" className="flex items-center gap-1">
+    <nav className="flex justify-between fixed z-50 w-full px-6 py-4 lg:px-10 bg-[#FAF9F6] border-b border-gray-300 shadow">
+      <Link href="/view-post" className="flex items-center gap-1">
         <Heart
           width={50}
           height={50}
-          className="max-sm:hidden text-white fill-white"
+          className="max-sm:hidden text-[#A594F9] fill-[#A594F9]"
         />
         <div className="flex items-center justify-center">
-          <p className="text-[35px] text-white max-sm:hidden font-thin tracking-tighter">
+          <p className="text-[35px] text-[#A594F9] max-sm:hidden font-thin tracking-tighter">
             Heart Blog
           </p>
         </div>
@@ -24,8 +28,36 @@ const Navbar = () => {
         <SignedIn>
           <UserButton />
         </SignedIn>
-        <MobileNav />
+        {/* <MobileNav /> */}
       </div>
+
+      {userId ? (
+        ""
+      ) : (
+        <div className="flex gap-5 justify-center items-center">
+          {/* <Link href="/sign-up">
+            <Button className="bg-[#FAF9F6] hover:bg-[#FAF9F6] border-none shadow-none text-black hover:text-purple-400 font-extralight">
+              Sign Up
+            </Button>
+          </Link> */}
+          <Link href="/sign-in">
+            <Button className="max-sm:hidden mr-[-30px] text-[18px] bg-[#FAF9F6] hover:bg-[#FAF9F6] border-none shadow-none text-black hover:text-purple-400  font-extralight">
+              Log In
+            </Button>
+          </Link>
+          <Link href="/sign-in">
+            <Button className=" lg:hidden bg-purple-700 hover:bg-purple-800 w-full rounded-lg px-4 py-3 shadow-none">
+              <Image
+                src="/icons/account.svg"
+                alt="login"
+                width={20}
+                height={20}
+              />
+              <span className=" text-purple-800 max-lg:hidden">Log In</span>
+            </Button>
+          </Link>
+        </div>
+      )}
     </nav>
   );
 };
