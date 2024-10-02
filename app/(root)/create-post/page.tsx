@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
+import { createPost } from "@/lib/actions/post.action";
 
 const CreatePost = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,14 +34,21 @@ const CreatePost = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
+      content: "",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    try {
+      await createPost(values);
+      form.reset(); // Reset form fields after successful submission
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -55,14 +63,13 @@ const CreatePost = () => {
             name="title"
             render={({ field }) => (
               <FormItem className="flex w-full flex-col">
-                <FormLabel>Blog Title</FormLabel>
+                <FormLabel className="text-blue-600">Blog Title</FormLabel>
                 <FormControl className="mt-3.5">
                   <Input className="min-h-[56px] bg-blue-200" {...field} />
                 </FormControl>
                 <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
                   Choose a title that sparks curiosity and excitement.
                 </FormDescription>
-                {/* FormMessage is for displaying success or error messages,in this case we want to display error message */}
                 <FormMessage className="text-red-500" />
               </FormItem>
             )}
@@ -72,14 +79,13 @@ const CreatePost = () => {
             name="content"
             render={({ field }) => (
               <FormItem className="flex w-full flex-col">
-                <FormLabel>Blog Content</FormLabel>
+                <FormLabel className="text-blue-600">Blog Content</FormLabel>
                 <FormControl className="mt-3.5">
                   <Textarea className="bg-blue-200 min-h-[200px]" {...field} />
                 </FormControl>
                 <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
                   Share your insights and let your creativity take center stage.
                 </FormDescription>
-                {/* FormMessage is for displaying success or error messages,in this case we want to display error message */}
                 <FormMessage className="text-red-500" />
               </FormItem>
             )}
