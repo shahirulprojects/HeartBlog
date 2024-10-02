@@ -18,33 +18,31 @@ const Page = async ({ params }: URLProps) => {
             height={35}
             alt="profile"
           />
-          <p className="paragraph-semibold text-dark300_light700">
-            {result.author.name}
-          </p>
+          <p className="paragraph-semibold text-black">{result.author.name}</p>
         </div>
-        <h2 className="h2-semibold text-dark200_light900 mt-3.5 w-full text-left">
+        <h2 className="h2-semibold text-black mt-3.5 w-full text-left">
           {result.title}
         </h2>
       </div>
 
-      <div className="text-dark200_light900 mb-8 mt-5 flex flex-wrap gap-4">
+      <div className="text-black mb-8 mt-5 flex flex-wrap gap-4">
         <Metric
           imgUrl="/assets/icons/clock.svg"
           alt="clock icon"
           value={` Asked ${getTimeStamp(result.createdAt)}`}
           title=""
-          textStyles="small-medium text-dark200_light900"
+          textStyles="small-medium text-black"
         />
         <Metric
           imgUrl="/assets/icons/eye.svg"
           alt="eye"
           value={formatNumber(result.views)}
           title="Views"
-          textStyles="small-medium text-dark200_light900"
+          textStyles="small-medium text-black"
         />
       </div>
 
-      <div className=" post-details mt-7 w-full rounded-2xl px-7 py-10 ">
+      <div className=" mt-7 w-full rounded-2xl px-7 py-10 ">
         {result.content}
       </div>
     </>
