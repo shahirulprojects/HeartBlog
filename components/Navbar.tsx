@@ -41,12 +41,12 @@ const Navbar = () => {
             </Button>
           </Link> */}
           <Link href="/sign-in">
-            <Button className="max-sm:hidden mr-[-30px] text-[18px] bg-[#FAF9F6] hover:bg-[#FAF9F6] border-none shadow-none text-black hover:text-purple-400  font-extralight">
+            <Button className="max-sm:hidden mr-[-30px] text-[18px] bg-[#FAF9F6] hover:bg-[#FAF9F6] border-none shadow-none text-[#A594F9] hover:text-purple-600  font-extralight">
               Log In
             </Button>
           </Link>
           <Link href="/sign-in">
-            <Button className=" lg:hidden bg-purple-700 hover:bg-purple-800 w-full rounded-lg px-4 py-3 shadow-none">
+            <Button className=" lg:hidden bg-[#A594F9] hover:bg-purple-600 w-full rounded-lg px-4 py-3 shadow-none">
               <Image
                 src="/icons/account.svg"
                 alt="login"
