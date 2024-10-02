@@ -83,3 +83,7 @@ body {
 .bg-sign-up {
   background-image: url("/icons/signupbg.png");
 }
+
+.bg-greeting {
+  background-image: url("/icons/greetingbg.png");
+}
