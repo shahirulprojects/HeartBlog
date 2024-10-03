@@ -28,7 +28,7 @@ export const Metric = ({
         alt={alt}
         className={`object-contain ${alt === "user" ? "rounded-full" : ""}`}
       />
-      <p className={`${textStyles}flex items-center gap-1`}>
+      <p className={`${textStyles} items-center gap-1`}>
         {value}
         <span
           className={`small-regular line-clamp-1 ${
