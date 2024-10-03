@@ -21,7 +21,7 @@ const Home = () => {
           Join our community of passionate writers and readers today!
         </p>
         <Link href="/view-post">
-          <Button className="bg-purple-960 rounded-full bg-yellow-300 hover:bg-yellow-400 p-4 text-white">
+          <Button className="bg-purple-960 rounded-full bg-yellow-400 hover:bg-yellow-500 p-4 text-white">
             Explore Blogs
           </Button>
         </Link>
