@@ -27,14 +27,14 @@ const Page = async ({ params }: URLProps) => {
 
       <div className="text-black mb-8 mt-5 flex flex-wrap gap-4">
         <Metric
-          imgUrl="/assets/icons/clock.svg"
+          imgUrl="/icons/clock.svg"
           alt="clock icon"
           value={` Asked ${getTimeStamp(result.createdAt)}`}
           title=""
           textStyles="small-medium text-black"
         />
         <Metric
-          imgUrl="/assets/icons/eye.svg"
+          imgUrl="/icons/eye.svg"
           alt="eye"
           value={formatNumber(result.views)}
           title="Views"

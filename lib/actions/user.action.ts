@@ -3,7 +3,11 @@
 
 import User from "@/database/user.model";
 import { connectToDatabase } from "../mongoose";
-import { CreateUserParams, DeleteUserParams } from "./shared.types";
+import {
+  CreateUserParams,
+  DeleteUserParams,
+  UpdateUserParams,
+} from "./shared.types";
 import Post from "@/database/post.model";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,6 +37,19 @@ export async function createUser(userData: CreateUserParams) {
     return newUser;
   } catch (error) {
     console.error("Error creating user:", error);
+    throw error;
+  }
+}
+
+export async function updateUser(params: UpdateUserParams) {
+  try {
+    connectToDatabase();
+
+    const { clerkId, updateData } = params;
+
+    await User.findOneAndUpdate({ clerkId }, updateData, { new: true }); // find the user based on the clerkId and passed the updated data and then create a new instance of the user in the database
+  } catch (error) {
+    console.error("Error updating user:", error);
     throw error;
   }
 }

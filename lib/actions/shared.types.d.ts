@@ -36,6 +36,11 @@ export interface GetUserByIdParams {
   userId: string;
 }
 
+export interface UpdateUserParams {
+  clerkId: string;
+  updateData: Partial<IUser>;
+}
+
 export interface DeleteUserParams {
   clerkId: string;
 }
