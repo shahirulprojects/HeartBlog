@@ -51,10 +51,10 @@ const Post = ({ mongoUserId }: Props) => {
       await createPost({
         title: values.title,
         content: values.content,
-        author: JSON.parse(mongoUserId), // since we used JSON.stringify before (at ask-question>page.tsx)
+        author: JSON.parse(mongoUserId), // since we used JSON.stringify before
         path: pathname,
       });
-      // navigate to view-post to see the question
+      // navigate to view-post to see the post
       router.push("/view-post");
       form.reset(); // reset form fields after successful submission
     } catch (error) {
