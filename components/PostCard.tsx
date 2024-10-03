@@ -1,4 +1,5 @@
-import { formatNumber, getTimeStamp } from "@/lib/utils";
+// import { formatNumber, getTimeStamp } from "@/lib/utils";
+import { getTimeStamp } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import Metric from "./Metric";
@@ -23,49 +24,47 @@ interface PostProps {
 //   return colors[randomIndex];
 // };
 
-const PostCard = ({ _id, title, author, views, createdAt }: PostProps) => {
+const PostCard = ({ _id, title, author, createdAt }: PostProps) => {
   // const backgroundColor = getRandomColor(); // Get a random background color
 
   return (
-    <div className="flex-row">
+    <Link href={`/post/${_id}`}>
       <div
-        className="mt-3 rounded-[50px] p-9 sm:px-11 bg-purple-300 outline-dashed outline-purple-600 w-[400px]"
+        className="mt-3 rounded-[50px] p-9 sm:px-11 bg-blue-300 outline-dashed outline-purple-600 w-[400px]"
         // style={{ backgroundColor }} // Apply the random background color
       >
         <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
           <div>
-            <span className=" text-white line-clamp-1 flex sm:hidden">
-              {getTimeStamp(createdAt)}
-            </span>
-            <Link href={`/post/${_id}`}>
-              <h3 className="text-white font-bold line-clamp-1 flex-1">
-                {title}
-              </h3>
-            </Link>
+            <h3 className="text-white font-bold line-clamp-1 flex-1">
+              {title}
+            </h3>
           </div>
         </div>
 
-        <div className="mt-6 w-full gap-3">
+        <div className="flex items-center justify-start mt-10">
           <Metric
             imgUrl={author.picture}
             alt="user"
             value={author.name}
-            title={`• wrote ${getTimeStamp(createdAt)}`}
+            title={`• posted ${getTimeStamp(createdAt)}`}
             isAuthor
-            textStyles="text-white"
+            textStyles="ml-[10px] lg:text-[14px] max-sm:text-[18px] font-medium leading-[18.2px] text-white"
           />
-          <div className="items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
+          <span className=" text-white max-sm:text-[12px] line-clamp-1 flex sm:hidden">
+            {getTimeStamp(createdAt)}
+          </span>
+          {/* <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
             <Metric
               imgUrl="/icons/eye.svg"
               alt="eye"
               value={formatNumber(views)}
               title="Views"
-              textStyles="text-white"
+              textStyles="text-[12px] font-medium leading-[15.6px] text-white"
             />
-          </div>
+          </div> */}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
