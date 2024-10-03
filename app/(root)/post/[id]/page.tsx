@@ -48,7 +48,9 @@ const Page = async ({ params }: URLProps) => {
       </div>
 
       <div className=" text-black bg-[#FAF9F6] outline outline-purple-400 outline-1 mt-7 w-full rounded-2xl px-7 py-10 ">
-        {result.content}
+        <div className="whitespace-pre-line text-justify leading-relaxed">
+          {result.content}
+        </div>
       </div>
     </>
   );

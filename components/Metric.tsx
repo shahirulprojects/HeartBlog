@@ -20,7 +20,7 @@ export const Metric = ({
 }: MetricProps) => {
   const metricContent = (
     // fragments
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center gap-1">
       <Image
         src={imgUrl}
         width={25}

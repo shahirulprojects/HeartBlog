@@ -30,12 +30,12 @@ const PostCard = ({ _id, title, author, createdAt }: PostProps) => {
   return (
     <Link href={`/post/${_id}`}>
       <div
-        className="mt-3 rounded-[50px] p-9 sm:px-11 bg-blue-300 outline-dashed outline-purple-600 w-[400px]"
+        className="mt-3 rounded-[50px] p-9 sm:px-11 bg-blue-300 outline outline-black w-[400px]"
         // style={{ backgroundColor }} // Apply the random background color
       >
         <div className="flex flex-col-reverse items-start justify-between gap-5 sm:flex-row">
           <div>
-            <h3 className="text-white font-bold line-clamp-1 flex-1">
+            <h3 className="text-white font-bold line-clamp-2 flex-1">
               {title}
             </h3>
           </div>
