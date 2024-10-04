@@ -10,16 +10,16 @@ const Home = () => {
 
       {/* Content container */}
       <div className="relative z-20 flex flex-col justify-center items-center h-full text-center">
-        <h1 className="text-purple-800 text-[48px] max-sm:text-[25px] max-sm:mt-[80px] font-extrabold mb-4">
-          Welcome to Heart Blog!
+        <h1 className="italic text-purple-800 text-[60px] max-sm:text-[30px] max-sm:mt-[80px] font-extrabold mb-4">
+          Heart Blog
         </h1>
-        <p className="font-light italic text-pink-500 text-[24px] max-sm:text-[20px] mb-6">
+        <p className="font-light text-pink-500 text-[24px] max-sm:text-[20px] mb-6">
           &quot;A space to explore your emotions, share your stories, and hear
           from others.&quot;
         </p>
-        <p className="text-pink-600 font-bold text-[18px] mb-8">
+        {/* <p className="text-pink-600 font-bold text-[18px] mb-8">
           Join our community of passionate writers and readers today!
-        </p>
+        </p> */}
         <Link href="/view-post">
           <Button className="bg-purple-960 rounded-full bg-yellow-400 hover:bg-yellow-500 p-4 text-white">
             Explore Blogs

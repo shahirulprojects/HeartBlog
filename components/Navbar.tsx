@@ -15,7 +15,7 @@ const Navbar = () => {
         <Heart
           width={50}
           height={50}
-          className="max-sm:hidden text-[#A594F9] fill-[#A594F9]"
+          className=" text-[#A594F9] fill-[#A594F9]"
         />
         <div className="flex items-center justify-center">
           <p className="text-[35px] text-[#A594F9] max-sm:hidden font-thin tracking-tighter">

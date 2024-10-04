@@ -46,7 +46,7 @@ export default async function ViewPost({ searchParams }: SearchParamsProps) {
       </div>
       {userId && (
         <Link href="/create-post">
-          <Button className="bg-purple-960 rounded-full bg-[#7A1CAC] hover:bg-[#640D5F] p-7 fixed bottom-5 right-5">
+          <Button className="rounded-full bg-[#7A1CAC] hover:bg-[#640D5F] p-7 fixed bottom-5 right-5">
             <Image src="/icons/pen.svg" alt="pen" width={30} height={30} />
           </Button>
         </Link>

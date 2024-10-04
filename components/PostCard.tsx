@@ -50,9 +50,11 @@ const PostCard = ({ _id, title, author, createdAt }: PostProps) => {
             isAuthor
             textStyles="ml-[10px] lg:text-[14px] max-sm:text-[18px] font-medium leading-[18.2px] text-white"
           />
-          <span className=" text-white max-sm:text-[12px] line-clamp-1 flex sm:hidden">
-            {getTimeStamp(createdAt)}
-          </span>
+          <div className="max-sm:hidden">
+            <span className=" text-white max-sm:text-[12px] line-clamp-1 flex sm:hidden">
+              {getTimeStamp(createdAt)}
+            </span>
+          </div>
           {/* <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
             <Metric
               imgUrl="/icons/eye.svg"

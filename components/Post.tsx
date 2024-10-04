@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { createPost } from "@/lib/actions/post.action";
 import { usePathname, useRouter } from "next/navigation";
+import { toast } from "@/hooks/use-toast";
 
 interface Props {
   mongoUserId: string;
@@ -54,10 +55,19 @@ const Post = ({ mongoUserId }: Props) => {
         author: JSON.parse(mongoUserId), // since we used JSON.stringify before
         path: pathname,
       });
+
+      toast({
+        title: "Blog Posted!",
+        description: "Blog has been successfully posted.",
+      });
       // navigate to view-post to see the post
       router.push("/view-post");
       form.reset(); // reset form fields after successful submission
     } catch (error) {
+      toast({
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with the request.",
+      });
       console.error(error);
     } finally {
       setIsLoading(false);

@@ -1,5 +1,6 @@
 // import LeftSidebar from "@/components/LeftSidebar";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "@/components/ui/toaster";
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -13,6 +14,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <div className="mx-auto w-full">{children}</div>
         </section>
       </div>
+      <Toaster />
     </main>
   );
 };
