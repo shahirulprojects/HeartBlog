@@ -9,7 +9,7 @@ const Home = () => {
       <div className="absolute inset-0 z-10"></div>
 
       {/* Content container */}
-      <div className="relative z-20 flex flex-col justify-center items-center h-full text-center">
+      <div className="fade-in relative z-20 flex flex-col justify-center items-center h-full text-center">
         <h1 className="italic text-purple-800 text-[60px] max-sm:text-[30px] max-sm:mt-[80px] font-extrabold mb-4">
           Heart Blog
         </h1>

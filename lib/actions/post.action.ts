@@ -38,33 +38,22 @@ export async function getPosts(params: GetPostsParams) {
   try {
     connectToDatabase();
 
-    const { searchQuery, filter } = params;
+    const { searchQuery } = params;
 
-    const query: FilterQuery<typeof Post> = {}; // how to read: query of a type FilterQuery and we are filtering something that are a type of Post. {} means that our query at the start is just an empty object
+    const query: FilterQuery<typeof Post> = {};
 
     // if a search query is provided, filter posts by title or content
     if (searchQuery) {
       query.$or = [
         { title: { $regex: new RegExp(searchQuery, "i") } },
-        { content: { $regex: new RegExp(searchQuery, "i") } }, // if the content contains the keyword of the search we will also display it
+        { content: { $regex: new RegExp(searchQuery, "i") } },
       ];
     }
 
-    let sortOptions = {};
-
-    switch (filter) {
-      case "newest":
-        sortOptions = { createdAt: -1 }; // sort by the latest posts asked
-        break;
-
-      default:
-        break;
-    }
-    const posts = await Post.find(query) // to find post
-
+    // Sorting posts by 'createdAt' field in descending order
+    const posts = await Post.find(query)
       .populate({ path: "author", model: User })
-
-      .sort(sortOptions); // to sort from newest post to oldest post (the newer post will be at the top)
+      .sort({ createdAt: -1 }); // Sorts by newest post first
 
     return { posts };
   } catch (error) {
