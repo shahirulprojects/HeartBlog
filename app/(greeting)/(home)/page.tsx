@@ -10,7 +10,7 @@ const Home = () => {
 
       {/* Content container */}
       <div className="fade-in relative z-20 flex flex-col justify-center items-center h-full text-center">
-        <h1 className="italic text-purple-800 text-[60px] max-sm:text-[30px] max-sm:mt-[80px] font-extrabold mb-4">
+        <h1 className=" text-purple-800 text-[60px] max-sm:text-[30px] max-sm:mt-[80px] font-bold mb-4">
           Heart Blog
         </h1>
         <p className="font-light text-pink-500 text-[24px] max-sm:text-[20px] mb-6">
