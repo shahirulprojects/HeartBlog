@@ -87,7 +87,7 @@ const Post = ({ mongoUserId }: Props) => {
                 <FormControl className="mt-3.5">
                   <Input className="min-h-[56px] bg-blue-200" {...field} />
                 </FormControl>
-                <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
+                <FormDescription className="body-regular mt-2.5 text-slate-400">
                   Choose a title that sparks curiosity and excitement.
                 </FormDescription>
                 <FormMessage className="text-red-500" />
@@ -103,7 +103,7 @@ const Post = ({ mongoUserId }: Props) => {
                 <FormControl className="mt-3.5">
                   <Textarea className="bg-blue-200 min-h-[200px]" {...field} />
                 </FormControl>
-                <FormDescription className="body-regular mt-2.5 text-[#7E60BF]">
+                <FormDescription className="body-regular mt-2.5 text-slate-400">
                   Share your insights and let your creativity take center stage.
                 </FormDescription>
                 <FormMessage className="text-red-500" />
@@ -113,7 +113,7 @@ const Post = ({ mongoUserId }: Props) => {
           <Button
             type="submit"
             disabled={isLoading}
-            className="rounded-2xl bg-[#7E60BF] hover:bg-[#433979]"
+            className="rounded-2xl bg-blue-600 hover:bg-blue-700"
           >
             {isLoading ? (
               <>

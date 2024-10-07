@@ -54,7 +54,7 @@ const Home = () => {
 
           <p className="text-xl mt-2">Write from the light of your heart</p>
           <Link href="/view-post">
-            <Button className="mt-4 rounded-full bg-yellow-400 hover:bg-yellow-600 p-4 text-white">
+            <Button className="mt-4 rounded-full bg-yellow-400 hover:bg-yellow-500 p-4 text-white">
               Explore Blogs
             </Button>
           </Link>
