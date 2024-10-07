@@ -14,7 +14,7 @@ const Page = async () => {
 
   return (
     <div className="text-[30px] mt-[-35px] ml-[-20px] max-sm:ml-[10px] max-sm:mt-[-50px]">
-      <h1 className="font-extrabold tracking-tighter text-purple-700 mb-[20px]">
+      <h1 className="font-extrabold tracking-tighter text-blue-700 mb-[20px]">
         Create Post
       </h1>
 

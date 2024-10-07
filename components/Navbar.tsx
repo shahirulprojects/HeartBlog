@@ -15,10 +15,10 @@ const Navbar = () => {
         <Heart
           width={50}
           height={50}
-          className=" text-[#A594F9] fill-[#A594F9]"
+          className=" text-blue-800 fill-blue-800"
         />
         <div className="flex items-center justify-center">
-          <p className="text-[35px] text-[#A594F9] max-sm:hidden font-thin tracking-tighter">
+          <p className="text-[35px] text-blue-500 max-sm:hidden font-thin tracking-tighter">
             Heart Blog
           </p>
         </div>
@@ -41,19 +41,19 @@ const Navbar = () => {
             </Button>
           </Link> */}
           <Link href="/sign-in">
-            <Button className="max-sm:hidden mr-[-30px] text-[18px] bg-[#FAF9F6] hover:bg-[#FAF9F6] border-none shadow-none text-[#A594F9] hover:text-purple-600  font-extralight">
+            <Button className="max-sm:hidden mr-[-30px] text-[18px] bg-[#FAF9F6] hover:bg-[#FAF9F6] border-none shadow-none text-blue-500 hover:text-blue-700  font-extralight">
               Log In
             </Button>
           </Link>
           <Link href="/sign-in">
-            <Button className=" lg:hidden bg-[#A594F9] hover:bg-purple-600 w-full rounded-lg px-4 py-3 shadow-none">
+            <Button className=" lg:hidden bg-blue-800 hover:bg-blue-900 w-full rounded-lg px-4 py-3 shadow-none">
               <Image
                 src="/icons/account.svg"
                 alt="login"
                 width={20}
                 height={20}
               />
-              <span className=" text-purple-800 max-lg:hidden">Log In</span>
+              <span className=" text-blue-700 max-lg:hidden">Log In</span>
             </Button>
           </Link>
         </div>

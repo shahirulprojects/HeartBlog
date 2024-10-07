@@ -62,12 +62,12 @@ const LeftSidebar = () => {
                 height={20}
                 className="lg:hidden"
               />
-              <span className="text-purple-800 max-lg:hidden">Log In</span>
+              <span className="text-blue-800 max-lg:hidden">Log In</span>
             </Button>
           </Link>
 
           <Link href="/sign-up">
-            <Button className="min-h-[41px] w-full rounded-lg px-4 py-3 text-purple-600 shadow-none">
+            <Button className="min-h-[41px] w-full rounded-lg px-4 py-3 text-blue-600 shadow-none">
               <Image
                 src="/icons/sign-up.svg"
                 alt="sign up"

@@ -78,10 +78,10 @@ body {
 }
 
 .bg-sign-in {
-  background-image: url("/icons/signinbg.png");
+  background-image: url("/icons/bgbothauth.png");
 }
 .bg-sign-up {
-  background-image: url("/icons/signupbg.png");
+  background-image: url("/icons/bgbothauth.png");
 }
 
 .bg-greeting {

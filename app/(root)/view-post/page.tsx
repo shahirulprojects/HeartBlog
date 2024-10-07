@@ -15,7 +15,7 @@ export default async function ViewPost({ searchParams }: SearchParamsProps) {
   const { userId } = auth();
   return (
     <div className="text-[30px] mt-[-35px] ml-[-20px] max-sm:ml-[10px] max-sm:mt-[-50px]">
-      <h1 className="font-extrabold tracking-tighter text-purple-700 mb-[20px]">
+      <h1 className="font-extrabold tracking-tighter text-blue-700 mb-[20px]">
         Explore Blogs
       </h1>
       <div className="text-black mt-10 flex flex-wrap w-full grid-cols-3 gap-[100px] max-sm:gap-5 justify-center items-center">
@@ -46,7 +46,7 @@ export default async function ViewPost({ searchParams }: SearchParamsProps) {
       </div>
       {userId && (
         <Link href="/create-post">
-          <Button className="rounded-full bg-[#7A1CAC] hover:bg-[#640D5F] p-7 fixed bottom-5 right-5">
+          <Button className="rounded-full bg-blue-600 hover:bg-blue-700 p-7 fixed bottom-5 right-5">
             <Image src="/icons/pen.svg" alt="pen" width={30} height={30} />
           </Button>
         </Link>
