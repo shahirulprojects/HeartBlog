@@ -62,8 +62,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/shahirulprojects/Codemate.git
-cd Codemate
+git clone https://github.com/shahirulprojects/HeartBlog.git
+cd HeartBlog
 ```
 
 **Installation**
@@ -95,6 +95,7 @@ NEXT_PUBLIC_BASE_URL=localhost:3000
 ```
 
 Replace the placeholder values with your actual respective account credentials. You can obtain these credentials by signing up on the [Clerk](https://clerk.com/) and [MongoDB](https://www.mongodb.com/)
+
 **Running the Project**
 
 ```bash
