@@ -66,7 +66,7 @@ const Post = ({ type, mongoUserId, postDetails }: Props) => {
           description: "Blog has been successfully edited.",
         });
         // navigate to view-post to see the post
-        router.push(`/view-post/${parsedPostDetails._id}`);
+        router.push(`/post/${parsedPostDetails._id}`);
         form.reset(); // reset form fields after successful submission
       } else {
         await createPost({
