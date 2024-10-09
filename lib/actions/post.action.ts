@@ -4,6 +4,7 @@ import Post from "@/database/post.model";
 import { connectToDatabase } from "../mongoose";
 import {
   CreatePostParams,
+  EditPostParams,
   GetPostByIdParams,
   GetPostsParams,
 } from "./shared.types";
@@ -77,6 +78,31 @@ export async function getPostById(params: GetPostByIdParams) {
     return post;
   } catch (error) {
     console.error("Error fetching post by ID:", error);
+    throw error;
+  }
+}
+
+export async function editPost(params: EditPostParams) {
+  try {
+    await connectToDatabase();
+
+    const { postId, title, content, path } = params;
+
+    const post = await Post.findById(postId);
+
+    if (!post) {
+      throw new Error("Post not found");
+    }
+
+    // update post fields
+    post.title = title; // update the title
+    post.content = content; // update the content
+
+    await post.save();
+
+    revalidatePath(path);
+  } catch (error) {
+    console.error("Error editing post:", error);
     throw error;
   }
 }

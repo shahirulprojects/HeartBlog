@@ -3,8 +3,11 @@ import { getTimeStamp } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 import Metric from "./Metric";
+import { SignedIn } from "@clerk/nextjs";
+import EditAction from "./EditAction";
 
 interface PostProps {
+  clerkId?: string | null;
   _id: string;
   title: string;
   author: {
@@ -24,8 +27,10 @@ interface PostProps {
 //   return colors[randomIndex];
 // };
 
-const PostCard = ({ _id, title, author, createdAt }: PostProps) => {
+const PostCard = ({ clerkId, _id, title, author, createdAt }: PostProps) => {
   // const backgroundColor = getRandomColor(); // Get a random background color
+
+  const showActionButtons = clerkId && clerkId === author.clerkId; // will only display the action button if the clerkId exists and it matches the author's clerk id
 
   return (
     <Link href={`/post/${_id}`}>
@@ -39,6 +44,9 @@ const PostCard = ({ _id, title, author, createdAt }: PostProps) => {
               {title}
             </h3>
           </div>
+          <SignedIn>
+            {showActionButtons && <EditAction itemId={JSON.stringify(_id)} />}
+          </SignedIn>
         </div>
 
         <div className="flex items-center justify-start mt-10">

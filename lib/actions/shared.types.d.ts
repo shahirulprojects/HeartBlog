@@ -24,6 +24,13 @@ export interface GetPostByIdParams {
   postId: string;
 }
 
+export interface EditPostParams {
+  postId: string;
+  title: string;
+  content: string;
+  path: string;
+}
+
 export interface CreateUserParams {
   clerkId: string;
   name: string;

@@ -16,17 +16,22 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
-import { createPost } from "@/lib/actions/post.action";
+import { createPost, editPost } from "@/lib/actions/post.action";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "@/hooks/use-toast";
 
 interface Props {
+  type?: string;
   mongoUserId: string;
+  postDetails?: string;
 }
-const Post = ({ mongoUserId }: Props) => {
+const Post = ({ type, mongoUserId, postDetails }: Props) => {
   const pathname = usePathname(); // to know on which URL that we are at right now
   const router = useRouter(); // to navigate
   const [isLoading, setIsLoading] = useState(false);
+
+  const parsedPostDetails = postDetails && JSON.parse(postDetails as string); // will show the postDetails if it exist or just display an empty string. This is for the edit option,we want to get the post details since it already exists
+
   const formSchema = z.object({
     title: z.string().min(10, {
       message: "Title must be at least 10 characters.",
@@ -40,8 +45,8 @@ const Post = ({ mongoUserId }: Props) => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      content: "",
+      title: parsedPostDetails?.title || "",
+      content: parsedPostDetails?.content || "",
     },
   });
 
@@ -49,20 +54,36 @@ const Post = ({ mongoUserId }: Props) => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     try {
-      await createPost({
-        title: values.title,
-        content: values.content,
-        author: JSON.parse(mongoUserId), // since we used JSON.stringify before
-        path: pathname,
-      });
+      if (type === "Edit") {
+        await editPost({
+          postId: parsedPostDetails._id, // passed the id of the post that we want to edit
+          title: values.title, // pass the title that we want to update
+          content: values.content, // pass the content that we want to update
+          path: pathname, // pass the path that we want to revalidate
+        });
+        toast({
+          title: "Blog Edited!",
+          description: "Blog has been successfully edited.",
+        });
+        // navigate to view-post to see the post
+        router.push(`/view-post/${parsedPostDetails._id}`);
+        form.reset(); // reset form fields after successful submission
+      } else {
+        await createPost({
+          title: values.title,
+          content: values.content,
+          author: JSON.parse(mongoUserId), // since we used JSON.stringify before
+          path: pathname,
+        });
 
-      toast({
-        title: "Blog Posted!",
-        description: "Blog has been successfully posted.",
-      });
-      // navigate to view-post to see the post
-      router.push("/view-post");
-      form.reset(); // reset form fields after successful submission
+        toast({
+          title: "Blog Posted!",
+          description: "Blog has been successfully posted.",
+        });
+        // navigate to view-post to see the post
+        router.push("/view-post");
+        form.reset(); // reset form fields after successful submission
+      }
     } catch (error) {
       toast({
         title: "Uh oh! Something went wrong.",
@@ -118,10 +139,10 @@ const Post = ({ mongoUserId }: Props) => {
             {isLoading ? (
               <>
                 <Loader2 size={20} className="animate-spin" />
-                &nbsp;Loading...
+                {type === "Edit" ? "Editing..." : "Posting..."}
               </>
             ) : (
-              "Submit"
+              <>{type === "Edit" ? "Edit Blog" : "Submit Blog"}</>
             )}
           </Button>
         </form>
